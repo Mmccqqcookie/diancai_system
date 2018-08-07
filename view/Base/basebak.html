@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>点菜系统</title>
+    <link rel="stylesheet" type="text/css" href="/static/bootstrap-3.3.7/css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="/static/css/base.css">
+    <script src="/static/Jquery/jquery-1.11.1.min.js"></script>
+</head>
+<body>
+<div class="pg_header">
+    <div class="title">随机选择菜谱</div>
+    <div class="pg_login_logout">
+        <ul>
+            <li>登入</li>
+            <li>注册</li>
+        </ul>
+    </div>
+</div>
+<div class="pg_body">
+    <div class="choose_checkbox">
+        <div class="row">
+            <div class="col-sm-12">
+                <div class="sousuo">
+                    <h3>搜索</h3>
+                    <div class="form-group">
+                        <label class="col-md-2 control-label" for="id_search" >搜索菜名</label>
+                        <div class="col-md-9">
+                            <input type="text" id="id_search"  class="form-control" name="dishes">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="col-md-2 control-label">
+                            <input type="button" class="blue" value="提交">
+                        </div>
+                    </div>
+                </div>
+
+                <div class="choose">
+                    <h3>选择</h3>
+                    <div class="form-group">
+                        <div class="label-num">
+                            <label class="checkbox-inline div-label">
+                                <input type="checkbox" name="roulei" value="1">  肉类
+                            </label>
+                            <input class='num' type="text" name="roulei_num">
+                        </div>
+                        <div class="label-num">
+                            <label class="checkbox-inline div-label">
+                                <input type="checkbox" name="sulei" value="2"> 素类
+                            </label>
+                            <input class='num' type="text" name="sulei_num">
+                        </div>
+                        <div class="label-num">
+                            <label class="checkbox-inline div-label">
+                                <input type="checkbox" name="yu" value="=3"> 鱼
+                            </label>
+                            <input class='num' type="text" name="yu_num">
+                        </div>
+                        <div class="label-num">
+                            <label class="checkbox-inline div-label">
+                                 <input type="checkbox" name="liangcai" value="4"> 凉菜
+                            </label>
+                            <input class='num' type="text" name="liangcai_num">
+                        </div>
+                        <div class="label-num">
+                            <label class="checkbox-inline div-label">
+                                <input type="checkbox" name="tang" value="5"> 汤
+                            </label>
+                            <input class='num' type="text" name="tang_num">
+                        </div>
+                        <div class="label-num">
+                            <label class="checkbox-inline div-label">
+                                <input type="checkbox" name="ganguo" value="6"> 干锅
+                            </label>
+                            <input class='num' type="text" name="ganguo_num">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="pg_footer"></div>
+</body>
+</html>

@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>点菜系统</title>
+    <meta name="referrer" content="no-referrer">
+    <link rel="stylesheet" type="text/css" href="/static/bootstrap-3.3.7/css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="/static/css/base.css">
+    <script rel="script" type="text/javascript" src="/static/Jquery/jquery-1.11.1.min.js"></script>
+    <script rel="script" type="text/javascript" src="/static/js/base.js"></script>
+</head>
+<body>
+<div class="pg_header">
+    <div class="title">随机选择菜谱</div>
+    <div class="pg_login_logout">
+        <ul>
+            <li>登入</li>
+            <li>注册</li>
+        </ul>
+    </div>
+</div>
+<div class="zhezhaoceng"></div>
+<div class="login_logout">
+    <div class="zhuce">
+        <h4>注册</h4>
+        <ul>
+            <li><input type="text" name="email" placeholder="邮箱"></li>
+            <li><input type="password" name="password" placeholder="密码"></li>
+            <li><input type="text" name="yanzhenma" placeholder="邮箱验证码"></li>
+            <li><input type="button" value="注册" class="blue"></li>
+        </ul>
+    </div>
+    <div class="login">
+        <h4>登入</h4>
+        <ul>
+            <li><input type="text" name="email" placeholder="账号邮箱"></li>
+            <li><input type="password" name="password" placeholder="密码"></li>
+            <li><input type="button" value="登入" class="blue"></li>
+        </ul>
+    </div>
+</div>
+<div class="pg_body">
+    <div class="choose_checkbox">
+        <div class="row">
+            <div class="col-sm-12">
+                <div class="sousuo">
+                    <h3>搜索</h3>
+                    <div class="form-group">
+                        <label class="col-md-2 control-label" for="id_search" >搜索菜名</label>
+                        <div class="col-md-9">
+                            <input type="text" required="required" id="id_search"  class="form-control" name="dishes">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="col-md-2 control-label">
+                            <input type="button" class="blue sousuo_tijiao" value="提交">
+                        </div>
+                    </div>
+                </div>
+
+                <div class="choose">
+                    <h3>选择各类别的数量随机</h3>
+                    <div class="form-group">
+                        <label class="col-sm-2 control-label">肉餐数量</label>
+                        <select name="roulei" class="col-sm-2">
+                            <option class="roucai" value=""></option>
+                            {% for i in range(1,10) %}
+                            <option class="roulei_{{i}}" value="{{i}}">{{i}}</option>
+                            {% end %}
+                        </select>
+                        <label class="col-sm-1 control-label">素类数量</label>
+                        <select name="sulei" class="col-sm-2">
+                            <option class="sucai" value=""></option>
+                            {% for i in range(1,10) %}
+                            <option class="sulei_{{i}}" value="{{i}}">{{i}}</option>
+                            {% end %}
+                        </select>
+                        <label class="col-sm-1 control-label">鱼数量</label>
+                        <select name="yu" class="col-sm-2">
+                            <option class="yulei" value=""></option>
+                            {% for i in range(1,10) %}
+                            <option class="yu_{{i}}" value="{{i}}">{{i}}</option>
+                            {% end %}
+                        </select>
+                    </div>
+                        <div class="form-group">
+                        <label class="col-sm-2 control-label">凉菜数量</label>
+                        <select name="liangcai" class="col-sm-2">
+                            <option class="liangcai" value=""></option>
+                            {% for i in range(1,10) %}
+                            <option class="liangcai_{{i}}" value={{i}}>{{i}}</option>
+                            {% end %}
+                        </select>
+                        <label class="col-sm-1 control-label">汤数量</label>
+                        <select name="tang" class="col-sm-2">
+                            <option class="tanglei" value=""></option>
+                            {% for i in range(1,10) %}
+                            <option class="tang_{{i}}" value={{i}}>{{i}}</option>
+                            {% end %}
+                        </select>
+                        <label class="col-sm-1 control-label">干锅数量</label>
+                        <select name="ganguo" class="col-sm-2">
+                            <option class="ganguo" value=""></option>
+                            {% for i in range(1,10) %}
+                            <option class="ganguo_{{i}}" value={{i}}>{{i}}</option>
+                            {% end %}
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <div class="col-md-2 control-label">
+                            <input type="button" class="blue" value="提交">
+                        </div>
+                    </div>
+                </div>
+                <div class="display-caidan">
+                    <h3>显示菜单</h3>
+                    <div class="search_result">
+                        <ul class="detail"></ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="pg_footer"></div>
+</body>
+</html>

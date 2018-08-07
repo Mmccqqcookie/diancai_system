@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>点菜系统</title>
+    <meta name="referrer" content="no-referrer">
+    <link rel="stylesheet" type="text/css" href="/static/bootstrap-3.3.7/css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="/static/fontawesome4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" type="text/css" href="/static/css/base.css">
+    {% block css %}{% end %}
+    <script rel="script" type="text/javascript" src="/static/Jquery/jquery-1.11.1.min.js"></script>
+    <script rel="script" type="text/javascript" src="/static/Jquery/jquery.cookie.js"></script>
+    <script rel="script" type="text/javascript" src="/static/js/base.js"></script>
+    {% block js %} {% end %}
+</head>
+<body>
+<div class="pg_header">
+    <div class="title">随机选择菜谱</div>
+    <div class="pg_login_logout">
+        <ul>
+            {% if login_user %}
+            <li class="user_menu"><i class="fa fa-list" aria-hidden="true"></i></li>
+            <li class="click_login_email">{{login_user}}</li>
+            {% else %}
+            <li class="click-login">登入</li>
+            <li class="click-zhuce">注册</li>
+            {% end %}
+        </ul>
+    </div>
+    <div class="login-menud hider">
+        <ul>
+            <li>更改密码</li>
+            <li><a href="/add_dish_menu">添加菜谱</a></li>
+            <li><a href="/logout">退出</a></li>
+        </ul>
+    </div>
+</div>
+<div class="zhezhaoceng hider"></div>
+<div class="login_logout hider">
+    <div class="zhuce">
+        <h4>注册</h4>
+        <ul>
+            <li class="zhuce_error" style="color: red"></li>
+            <li><input type="text" name="email" placeholder="邮箱"></li>
+            <li><input type="password" name="password" placeholder="密码"></li>
+            <li><input style="width: 80px;margin: 0 10px 0 0" type="text" name="yanzhenma" placeholder="邮箱验证码">
+                <button type="button" class="blue get-yanzhenma">获取验证码</button></span>
+            </li>
+            <li><button type="button" class="blue registr">注册</button></li>
+        </ul>
+    </div>
+    <div class="login">
+        <h4>登入</h4>
+        <ul>
+            <li class="login_error" style="color: red"></li>
+            <li><input type="text" name="email" placeholder="账号邮箱"></li>
+            <li><input type="password" name="password" placeholder="密码"></li>
+            <li><button type="button" class="blue login-on">登入</button></li>
+        </ul>
+        <div class="quxiao"><span class="goback">返回<<</span></div>
+    </div>
+</div>
+{% block pg_body %}
+{% end %}
+{% block pg_footer %}{% end %}
+
+</body>
+</html>

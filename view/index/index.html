@@ -1,0 +1,106 @@
+{% extends '../Base/base.html' %}
+{% block css %}
+<link rel="stylesheet" type="text/css" href="/static/css/index.css">
+{% end %}
+{% block js %}
+<script type="text/javascript" rel="script" src="/static/js/index.js"></script>
+{% end %}
+{% block pg_body%}
+<div class="pg_body">
+    <div class="choose_checkbox margin-80">
+        <div class="row">
+            <div class="col-sm-12">
+                <div class="sousuo">
+                    <h3>搜索</h3>
+                    <div class="form-group">
+                        <label class="col-md-2 control-label" for="id_search" >搜索菜名</label>
+                        <div class="col-md-9">
+                            <input type="text" required="required" id="id_search"  class="form-control" name="dishes">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="col-md-2 control-label">
+                            <input type="button" class="blue sousuo_tijiao" value="提交">
+                        </div>
+                    </div>
+                </div>
+
+                <div class="choose">
+                    <h3>选择各类别的数量随机</h3>
+                    <div class="form-group">
+                        <label class="col-sm-2 control-label">家常菜</label>
+                        <select name="jiachangcai" class="col-sm-2">
+                            <option class="jiachangcai" value=""></option>
+                            {% for i in range(1,10) %}
+                            <option class="jiachangcai_{{i}}" value="{{i}}">{{i}}</option>
+                            {% end %}
+                        </select>
+                        <label class="col-sm-1 control-label">下饭菜</label>
+                        <select name="xiafancai" class="col-sm-2">
+                            <option class="xiafancai" value=""></option>
+                            {% for i in range(1,10) %}
+                            <option class="xiafancai_{{i}}" value="{{i}}">{{i}}</option>
+                            {% end %}
+                        </select>
+                        <label class="col-sm-1 control-label">素菜</label>
+                        <select name="sucai" class="col-sm-2">
+                            <option class="sucai" value=""></option>
+                            {% for i in range(1,10) %}
+                            <option class="sucai_{{i}}" value="{{i}}">{{i}}</option>
+                            {% end %}
+                        </select>
+                    </div>
+                        <div class="form-group">
+                        <label class="col-sm-2 control-label">大鱼大肉</label>
+                        <select name="yurou" class="col-sm-2">
+                            <option class="yurou" value=""></option>
+                            {% for i in range(1,10) %}
+                            <option class="yurou_{{i}}" value={{i}}>{{i}}</option>
+                            {% end %}
+                        </select>
+                        <label class="col-sm-1 control-label">汤羹</label>
+                        <select name="tang" class="col-sm-2">
+                            <option class="tanglei" value=""></option>
+                            {% for i in range(1,10) %}
+                            <option class="tang_{{i}}" value={{i}}>{{i}}</option>
+                            {% end %}
+                        </select>
+                        <label class="col-sm-1 control-label">凉菜</label>
+                        <select name="liangcai" class="col-sm-2">
+                            <option class="liangcai" value=""></option>
+                            {% for i in range(1,10) %}
+                            <option class="liangcai_{{i}}" value={{i}}>{{i}}</option>
+                            {% end %}
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <div class="col-md-2 control-label">
+                            <input type="button" class="blue" value="提交">
+                        </div>
+                    </div>
+                </div>
+                <div id="display_caidan" class="display-caidan">
+                    <h3>显示菜单</h3>
+                    <div class="search_result">
+                        <div class="add_quxiao">
+                            <button class="blue add_tijiao_caidan">确定加入</button>
+                            <button class="blue quxiao_add_caidan">取消加入</button>
+                        </div>
+                        <ul class="detail"></ul>
+                    </div>
+                    <nav aria-label="Page navigation" class="hider">
+                        <ul class="pagination pagination-lg">
+                            {% for i in range(1,11) %}
+                            <li><a href="#">{{i}}</a></li>
+                            {% end %}
+                        </ul>
+                    </nav>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% end %}
+{% block pg_footer %}
+<div class="pg_footer"></div>
+{% end %}

@@ -1,0 +1,179 @@
+*,h1,h2,h3,h4,h5{
+    padding: 0;
+    margin: 0;
+}
+ul li{
+    list-style: none;
+}
+a{
+    color: #12937c;
+    text-decoration: none;
+}
+a:hover{
+    color: #12937c;
+    text-decoration: none;
+}
+a:visited{
+    color: #12937c;
+    text-decoration: none;
+}
+a:active{
+    color: #12937c;
+    text-decoration: none;
+}
+.pg_header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 48px;
+    background-color: #daeae8;
+    color: #12937c;
+    z-index: 5;
+    line-height: 48px;
+}
+.pg_header .title{
+    float: left;
+    font-size: 1.25em;
+    width: 10%;
+    text-align: center;
+    margin: 0 48px;
+    cursor: pointer;
+}
+.pg_header .pg_login_logout {
+    width: 50%;
+    float: right;
+    margin: 0 80px;
+}
+
+.pg_header .pg_login_logout ul li{
+    float: right;
+    font-size: 1.1em;
+    width: 80px;
+    text-align: center;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    cursor: pointer;
+}
+.pg_header .pg_login_logout ul li:hover{
+    background-color: #23527c;
+    color: white;
+}
+.pg_header .pg_login_logout ul  .click_login_email:hover{
+    width: 200px;
+    text-overflow:inherit;
+    overflow:visible;
+}
+.zhezhaoceng{
+    position: fixed;
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    background-color: black;
+    opacity: 0.3;
+    z-index: 10;
+}
+.hider{
+    display: none;
+}
+.blue{
+    background-color: #337ab7;
+    color: white;
+    border: 1px solid;
+    border-color:#337ab7;
+    border-radius:4px;
+    width: 80px;
+}
+button{
+    height: 30px;
+}
+.login_logout{
+    width: 700px;
+    height: 250px;
+    background-color: white;
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    margin-top: -250px;
+    margin-left: -350px;
+    z-index: 15;
+    border-radius: 10px;
+}
+.login_logout h4{
+    height: 30px;
+    background-color: #e7ecf2;
+    color: #abb6d2;
+    line-height: 30px;
+    text-align: center;
+}
+.login_logout ul{
+    width: 320px;
+    text-align: center;
+}
+.login_logout ul li{
+    margin: 10px 0;
+    height: 30px ;
+    line-height: 30px;
+}
+.login_logout .zhuce_error{
+    margin: 15px 0 5px 0;
+}
+.login_logout ul li input{
+    height: 30px;
+    width: 172px;
+    border: 1px solid #CDDDEF;
+}
+.login_logout .zhuce{
+    float: left;
+    left: 0;
+    top: 0;
+    width: 350px;
+}
+.login_logout .login{
+    float: right;
+    width: 350px;
+}
+
+.login_logout  .quxiao{
+    text-align: right;
+    height: 30px;
+    line-height: 30px;
+    padding: 0 20px;
+}
+
+.login .quxiao .goback{
+    display: inline-block;
+    text-align: center;
+    width: 60px;
+    font-size: 14px;
+    font-weight: 500;
+    color: white;
+    background-color: #337ab7;
+    border-radius: 4px;
+    border-color: #337ab7;
+}
+.login .quxiao .goback:hover{
+    cursor: pointer;
+}
+
+.pg_header .login-menud{
+    text-align: center;
+    position: fixed;
+    right: 80px ;
+    top: 48px;
+    width: 80px;
+    background-color: #daeae8;
+    z-index: 10;
+}
+.pg_header .login-menud ul{
+    margin: 0;
+}
+.pg_header .login-menud ul li:hover{
+    color: white;
+    cursor: pointer;
+    background-color: #23527c;
+}
+.pg_header .login-menud ul li:hover a{
+    color: white;
+}
