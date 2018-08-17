@@ -5,6 +5,7 @@ $(function(){
     sousuo_tijiao();
     keyup_submit();
     page_a_click();
+    suiji_dish_tijiao();
 });
 function tijiao() {
     var search_val = $('#id_search').val();
@@ -30,6 +31,7 @@ function tijiao() {
                             creat_a.append(creat_img);
                             creat_h5.text(item.title);
                             creat_button1.text('加入菜单');
+                            creat_button1.addClass('index-add-dish');
                             creat_button1.click(function () {
                                 $(this).addClass('add-menu');
                                 $(this).text('已选择');
@@ -106,6 +108,7 @@ function page_a_click() {
                             creat_a.append(creat_img);
                             creat_h5.text(item.title);
                             creat_button1.text('加入菜单');
+                            creat_button1.addClass('index-add-dish');
                             creat_button1.click(function () {
                                 $(this).addClass('add-menu');
                                 $(this).text('已选择');
@@ -136,15 +139,89 @@ function page_a_click() {
     })
 }
 
+function suiji_dish_tijiao() {
+    $('.suiji_tijiao').click(function () {
+        var jcc = $('select[name="jiachangcai"]').val();
+        var xfc = $('select[name="xiafancai"]').val();
+        var sc = $('select[name="sucai"]').val();
+        var yr = $('select[name="yurou"]').val();
+        var tg = $('select[name="tanggeng"]').val();
+        var lc = $('select[name="liangcai"]').val();
+        $.ajax({
+            url:'/suiji_dish',
+            type:'GET',
+            data:{'jiachangcai':jcc,'xiafancai':xfc,'sucai':sc,'dayudarou':yr,'tg':tg,'liangcai':lc},
+            success:function (data) {
+                if(data.status == true){
+                    var targ = $('.detail');
+                        targ.empty();
+                        data.data.forEach(function(item){
+                            var creat_li = $('<li>');
+                            var creat_a = $('<a>');
+                            var creat_img = $('<img>');
+                            var creat_h5 = $('<h4>');
+                            var creat_button1 = $('<button>');
+                            var creat_button2 = $('<button>');
+                            var creat_p1 = document.createElement('p');
+                            creat_a.attr({'href':item.url,'target':'_blank'});
+                            creat_img.attr({src:item.img,alt:item.title});
+                            creat_a.append(creat_img);
+                            creat_h5.text(item.title);
+                            creat_button1.text('加入菜单');
 
-// function add_menu_button() {
-//     $('.display-caidan .detail li').each(function () {
-//         $(this).filter('button,:first').click(function () {
-//             $(this).css({'background-color': '#F2F2F2', 'cursor': 'not-allowed', "color": 'black'});
-//
-//         });
-//         $(this).children().filter('button,:last').click(function () {
-//             $(this).css({'background-color': '#337ab7', 'cursor': 'pointer', "color": 'white'})
-//         })
-//     })
-// }
+                            creat_button1.click(function () {
+                                $(this).addClass('add-menu');
+                                $(this).text('已选择');
+                                $(this).val(1);
+                                $(this).css({'background-color': '#F2F2F2', 'cursor': 'not-allowed', "color": 'black'});
+                            });
+                            creat_button2.text('移除菜单');
+                            creat_button2.click(function () {
+                                $(this).siblings().filter('.add-menu').text('加入菜单');
+                                $(this).siblings().filter('.add-menu').removeAttr('value');
+                                $(this).siblings().filter('.add-menu').css({'background-color': '#337ab7', 'cursor': 'pointer', "color": 'white'})
+                            });
+                            creat_p1.innerText = item.side_dish;
+                            creat_li.append(creat_a);
+                            creat_li.append(creat_button1);
+                            creat_li.append(creat_button2);
+                            creat_li.append(creat_h5);
+                            creat_li.append(creat_p1);
+                            creat_li.append(item.stats);
+                            targ.append(creat_li);
+                             });
+                        $('.detail li button').addClass('blue');
+                }
+            }
+        })
+    })
+}
+
+function index_add_menu() {
+    $('.display-caidan ul li button[class="index-add-dish"]').click(function () {
+        $('.zhezhaoceng').removeClass('hider');
+        $('.choose-add-category').removeClass('hider');
+        var category = '';
+        $('.choose-add-category ul li').click(function () {
+            category = $(this).text();
+            $('.zhezhaoceng').addClass('hider');
+            $('.choose-add-category').addClass('hider');
+        });
+        $('.choose-add-category h4 span').click(function () {
+            $('.zhezhaoceng').addClass('hider');
+            $('.choose-add-category').addClass('hider');
+        });
+        if(category != ''){
+            var dish = $(this).siblings().filter('h4').text();
+            $.ajax({
+                url:'/index_add_dish',
+                type:'GET',
+                data:{'dish':dish,'category':category},
+                success:function (data) {
+
+                }
+            })
+        }
+
+    })
+}

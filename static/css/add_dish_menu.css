@@ -3,3 +3,28 @@
     height: 120px;
 
 }
+
+.tijiao-qingchu {
+    height: 30px;
+    margin: 40px 0;
+}
+.data-message{
+    text-align: center;
+}
+
+.fix-menu{
+    position: fixed;
+    top: 80px;
+    right: 40px;
+    z-index: 15;
+}
+.fix-menu button{
+   margin: 0 10px;
+}
+
+.fix-footer {
+    position: fixed;
+    bottom: 50px;
+    right: 100px;
+    z-index: 15;
+}

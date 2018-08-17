@@ -12,6 +12,20 @@ class UserRepository(IUserrepository):
         self.Session = sessionmaker(bind=DBconon().engine())
         self.session = self.Session()
 
+    def fetch_one_message(self,email):
+        result = self.session.query(User).filter_by(email=email).first()
+        if result:
+            modeluser = Model.User.model_user(id=result.id, email=result.email, password=result.password,
+                                              login_time=result.last_login, jiachangcai=result.jiachangcai,
+                                              xiafancai=result.xiafancai, sucai=result.sucai,
+                                              dayudarou=result.dayudarou,
+                                              tanggeng=result.tanggeng, liangcai=result.liangcai,
+                                              suiji_caidan=result.suiji_candan)
+            return modeluser
+        else:
+            return False
+
+
     def check_email(self,email):
         result = self.session.query(User).filter_by(email=email).first()
         if result:
@@ -36,6 +50,23 @@ class UserRepository(IUserrepository):
 
     def update_passwrod(self,email,password):
         self.session.query(User).filter_by(email=email).update({'password':password})
+        self.session.commit()
+
+    def update_dish(self,user,jiachangcai=None,xiafancai=None,sucai=None,dayudarou=None,
+                    tanggeng=None,liangcai=None):
+        if jiachangcai:
+            self.session.query(User).filter_by(email=user).update({'jiachangcai':jiachangcai})
+        if xiafancai:
+            self.session.query(User).filter_by(email=user).update({'xiafancai':xiafancai})
+        if sucai:
+            self.session.query(User).filter_by(email=user).update({'sucai':sucai})
+        if dayudarou:
+            self.session.query(User).filter_by(email=user).update({'dayudarou':dayudarou})
+        if tanggeng:
+            self.session.query(User).filter_by(email=user).update({'tanggeng':tanggeng})
+        if liangcai:
+            self.session.query(User).filter_by(email=user).update({'liangcai':liangcai})
+
         self.session.commit()
 
     def add_email_password(self,email,password):

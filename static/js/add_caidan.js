@@ -3,6 +3,9 @@
  */
 $(function(){
     button_click();
+    Add_tijiao_dish();
+    Add_cate_dish_menu();
+    fixed_button_on_click();
 
 });
 
@@ -77,6 +80,66 @@ function Add_tijiao_dish() {
     $('.add_tijiao_caidan').click(function () {
         var add_tijiao_addr = $(this).val();
 
+        var dish_val = $('button[category_url="' +add_tijiao_addr + '"]').parent().next().children().val() + ' ';
 
+        $('.display-caidan .detail li button[value="1"]').each(function () {
+            var dish = $(this).siblings().filter('h4').text();
+            var reg = new RegExp(dish);
+            if(reg.test(dish_val) == false){
+                 dish_val +=  dish + ' ';
+            }else{
+                return true;
+            }
+        });
+        $('button[category_url="' +add_tijiao_addr + '"]').parent().next().children().val(dish_val);
     })
+}
+
+
+function Add_cate_dish_menu() {
+    $('.add_cate_tijiao').click(function () {
+        var user = $('.click_login_email').text();
+        var jiachangcai = $('.jiachangcai').children().val();
+        var xiafancai = $('.xiafancai').children().val();
+        var sucai = $('.sucai').children().val();
+        var dayudarou = $('.dayudarou').children().val();
+        var tanggeng = $('.tanggeng').children().val();
+        var liangcai = $('.liangcai').children().val();
+
+        $.ajax({
+            url:'/add_dish_menu',
+            type:'POST',
+            data:{'user':user,'jiachangcai':jiachangcai,'xiafancai':xiafancai,'sucai':sucai,
+            'dayudarou':dayudarou,'tanggeng':tanggeng,'liangcai':liangcai},
+            success:function (data) {
+                if(data.status==false){
+                    $('.data-message').text(data.message);
+                    $('.data-message').css({'color':'red'})
+                }else{
+                    $('.data-message').text(data.message);
+                    $('.data-message').css({'color':'green'})
+                }
+                setTimeout(function () {
+                    $('.data-message').text('')
+                },8000)
+            }
+        })
+    })
+}
+
+
+function fixed_button_on_click() {
+    $('.black-index').click(function () {
+        window.location.href = '/';
+    });
+    $('.black-dish').click(function () {
+        $('#display_caidan')[0].scrollIntoView(true);
+    });
+    $('.black-top').click(function () {
+        $('.pg_body')[0].scrollIntoView(true);
+    });
+    $('.qingchu').click(function () {
+        window.location.href = '/'
+    })
+
 }

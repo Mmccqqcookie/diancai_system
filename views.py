@@ -5,6 +5,8 @@ from Common.Session import seesion as Csession
 from Common.send_email import Send_email
 from Common.random_str import Random_str
 from Service.user.ServiceUser import User_Service
+from Service.caimenu.ServiceCaiMenu import CaiMenu_Service
+from Common.suji_dish import SuijiDish
 
 
 class BaseHandler(tornado.web.RequestHandler):
@@ -12,6 +14,8 @@ class BaseHandler(tornado.web.RequestHandler):
         self.SendEmail = Send_email()
         self.Randomstr = Random_str()
         self.userservice = User_Service()
+        self.caimenuservice = CaiMenu_Service()
+        self.csession = Csession(self)
 
     def get_current_user(self):
         csession = Csession(self)
@@ -109,9 +113,32 @@ class ResgistrHandler(BaseHandler):
 class AddDishMenuHandler(BaseHandler):
     @tornado.web.authenticated
     def get(self, *args, **kwargs):
-        self.render('index/add_caidan.html',login_user=self.current_user)
+        email = self.csession['__login']
+        response = self.userservice.fetch_oen_message(email)
+        jcc = response.model_view.jiachangcai
+        xfc = response.model_view.xiafancai
+        sc = response.model_view.sucai
+        yr = response.model_view.dayudarou
+        tg = response.model_view.tanggeng
+        lc = response.model_view.liangcai
+        self.render('index/add_caidan.html',login_user=self.current_user,jiachangcai=jcc,xiafancai=xfc,
+                    sucai=sc,dayudarou=yr,tanggeng=tg,liangcai=lc)
+
+    def post(self, *args, **kwargs):
+        response = self.userservice.update_dish(self)
+        if not response.status:
+            data = {'status':response.status,'message':response.message}
+        else:
+            data = {'status':response.status,"message":'添加菜单成功'}
+
+        self.write(data)
 
 
-
+class SuijiDishNumHandler(BaseHandler):
+    def get(self, *args, **kwargs):
+        suijidish = SuijiDish(self,self.csession['__login'])
+        dish_list = suijidish.Get_email_mysql_cate_dish()
+        data = {'status':True,'data':dish_list}
+        self.write(data)
 
 

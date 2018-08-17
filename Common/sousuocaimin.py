@@ -15,6 +15,14 @@ category = {
     '/category/20137':6
 
 }
+cate_dish ={
+    'jiachangcai':1,
+    'xiafancai':2,
+    'sucai':3,
+    'dayudarou':4,
+    'tanggeng':5,
+    'liangcai':6
+}
 
 def open_url_keword(keyword):
     data = {'keyword':keyword,'cat':1001}
@@ -53,14 +61,13 @@ def page_tab_data(url,category_url):
         search_list = soup.find('div',class_='normal-recipe-list').find('ul', class_='list').find_all('li')
     search_detail = []
     for li in search_list:
-        title = li.find('p', class_='name').find('a').text.strip()
+        title = li.find('p', class_='name').find('a').text.strip().split(' ')[0]
         url = 'http://www.xiachufang.com' + li.find('p', class_='name').find('a')['href'].strip()
         side_dish = li.find('p', class_='ing ellipsis').text.strip()
         img = li.find('img')['data-src'].strip()
         stats = str(li.find('p', class_='stats')).strip()
         add_caidan = CaiMenu_Service()
         response = add_caidan.check_dish_exits(title)
-        print(response.message)
         if not response.status:
             add_caidan.add_dish(title, url, img, side_dish, stats, category[category_url])
         dish_detail = {'title': title, 'url': url, 'img': img,
@@ -69,8 +76,8 @@ def page_tab_data(url,category_url):
     return search_detail
 
 
-def get_search_html(keyword):
-    html = open_url_keword(keyword)
+def get_search_html(keyword,perfect_match=False,cate=None):
+    html = open_url_keword(keyword.strip())
     response_url = html.url.replace('http://www.xiachufang.com','')
     soup = BeautifulSoup(html.text,'lxml')
     if soup.select('.search-result-list'):
@@ -83,9 +90,14 @@ def get_search_html(keyword):
         url = 'http://www.xiachufang.com' + li.find('p',class_='name').find('a')['href']
         side_dish = li.find('p',class_='ing ellipsis').text
         img = li.find('img')['data-src']
-        stats = li.find('p',class_='stats')
+        stats = str(li.find('p',class_='stats'))
         dish_detail = {'title':title,'url':url,'img':img,
-                       'side_dish':side_dish,'stats':str(stats)}
+                       'side_dish':side_dish,'stats':stats}
+        if perfect_match:
+            if keyword.strip() == title.strip():
+                add_caidan = CaiMenu_Service()
+                add_caidan.add_dish(title, url, img, side_dish, stats, cate_dish[cate])
+                return dish_detail
         search_detail.append(dish_detail)
     return search_detail,response_url
 

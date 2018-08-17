@@ -92,7 +92,7 @@ button{
     width: 700px;
     height: 250px;
     background-color: white;
-    position: absolute;
+    position: fixed;
     left: 50%;
     top: 50%;
     margin-top: -250px;

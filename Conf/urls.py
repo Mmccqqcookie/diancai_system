@@ -12,4 +12,5 @@ urls = [
     ('/logout',LogoutHandler),
     ('/add_dish_menu',AddDishMenuHandler),
     ('/category/(\d+.*)',PageTabHandler),
+    ('/suiji_dish',SuijiDishNumHandler),
 ]

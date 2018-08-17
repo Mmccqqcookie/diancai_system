@@ -23,6 +23,10 @@ class UserService:
     def __init__(self):
         self.repository = UserRepository()
 
+    def fetch_one_message(self,email):
+        result = self.repository.fetch_one_message(email)
+        return result
+
     def check_email(self,email):
         result = self.repository.check_email(email)
         return result
@@ -38,6 +42,8 @@ class UserService:
     def update_password(self,email,password):
         self.repository.update_passwrod(email,password)
 
+    def update_dish(self,user,jiachangcai=None,xiafancai=None,sucai=None,dayudarou=None,tanggeng=None,liangcai=None):
+        self.repository.update_dish(user,jiachangcai,xiafancai,sucai,dayudarou,tanggeng,liangcai)
 
     def add_email_password(self,email,password):
         self.repository.add_email_password(email,password)

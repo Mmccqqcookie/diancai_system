@@ -83,3 +83,46 @@ h3{
 nav {
     text-align: center;
 }
+
+.choose-add-category {
+    width: 200px;
+    min-height: 200px;
+    position: fixed;
+    top:50%;
+    left: 50%;
+    margin-top: -100px;
+    margin-left: -150px;
+    z-index: 15;
+    border-radius: 10px;
+    background-color: #f4f0ec;
+}
+.choose-add-category h4{
+    height: 40px;
+    background-color: #e7ecf2;
+    color: #abb6d2;
+    line-height: 40px;
+    text-align: right;
+}
+.choose-add-category h4 span{
+    display: inline-block;
+    height: 40px;
+    width: 40px;
+    text-align: center;
+}
+.choose-add-category h4 span:hover{
+    background-color: #23527c;
+}
+.choose-add-category ul{
+    margin: 0;
+}
+.choose-add-category ul li{
+    height: 40px;
+    line-height: 40px;
+    font-size: 18px;
+    text-align: center;
+}
+.choose-add-category ul li:hover{
+    color: white;
+    cursor: pointer;
+    background-color: #23527c;
+}

@@ -9,6 +9,13 @@
 {% end %}
 {% block pg_body%}
 <div class="pg_body">
+    <div class="fix-menu">
+        <button class="blue black-index">返回首页</button>
+        <button class="blue black-dish">跳转菜单</button>
+    </div>
+    <div class='fix-footer'>
+        <button class="blue black-top">返回顶部</button>
+    </div>
     <div class="margin-80">
         <div claas="row">
             <div class="col-sm-12">
@@ -19,8 +26,8 @@
                         <div class="col-md-9">
                             <button class="blue" category_url="/category/40076">点我</button>
                         </div>
-                        <div>
-                            <textarea rows="4" class="col-md-10 col-md-offset-1"></textarea>
+                        <div class="jiachangcai">
+                            <textarea rows="4" class="col-md-10 col-md-offset-1" placeholder="例如：小鸡炖蘑菇" >{{jiachangcai}}</textarea>
                         </div>
 
                     </div>
@@ -29,8 +36,8 @@
                         <div class="col-sm-9">
                             <button class="blue" category_url="/category/40078">点我</button>
                         </div>
-                        <div>
-                            <textarea rows="4" class="col-sm-10 col-md-offset-1"></textarea>
+                        <div class="xiafancai">
+                            <textarea rows="4" class="col-sm-10 col-md-offset-1">{{xiafancai}}</textarea>
                         </div>
 
                     </div>
@@ -39,8 +46,8 @@
                         <div class="col-sm-9">
                             <button class="blue" category_url="/category/51848">点我</button>
                         </div>
-                        <div >
-                            <textarea rows="4" class="col-sm-10 col-md-offset-1"></textarea>
+                        <div class="sucai">
+                            <textarea rows="4" class="col-sm-10 col-md-offset-1">{{sucai}}</textarea>
                         </div>
 
                     </div>
@@ -49,8 +56,8 @@
                         <div class="col-md-9">
                             <button class="blue" category_url="/category/52354">点我</button>
                         </div>
-                        <div >
-                            <textarea rows="4" class="col-md-10 col-md-offset-1"></textarea>
+                        <div class="dayudarou">
+                            <textarea rows="4" class="col-md-10 col-md-offset-1">{{dayudarou}}</textarea>
                         </div>
 
                     </div>
@@ -59,8 +66,8 @@
                         <div class="col-md-9">
                             <button class="blue" category_url="/category/20130">点我</button>
                         </div>
-                        <div >
-                            <textarea rows="4" class="col-md-10 col-md-offset-1"></textarea>
+                        <div class="tanggeng">
+                            <textarea rows="4" class="col-md-10 col-md-offset-1">{{tanggeng}}</textarea>
                         </div>
 
                     </div>
@@ -70,8 +77,13 @@
                             <button class="blue"category_url="/category/20137">点我</button>
                         </div>
                         <div class="liangcai" >
-                            <textarea rows="4" class="col-md-10 col-md-offset-1"></textarea>
+                            <textarea rows="4" class="col-md-10 col-md-offset-1">{{liangcai}}</textarea>
                         </div>
+                    </div>
+                    <div class="form-group tijiao-qingchu">
+                        <div class="data-message"></div>
+                        <button class="blue col-md-offset-3 add_cate_tijiao">提交</button>
+                        <button class="blue col-md-offset-1 qingchu">返回首页</button>
                     </div>
                 </div>
                 <div id="display_caidan" class="display-caidan">

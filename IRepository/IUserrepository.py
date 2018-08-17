@@ -3,6 +3,13 @@
 
 
 class IUserrepository:
+    def fetch_one_message(self,*args,**kwargs):
+        '''
+        
+        :param args: 
+        :param kwargs: 
+        :return: 
+        '''
 
     def check_email(self,email):
         '''
@@ -29,6 +36,14 @@ class IUserrepository:
         '''
 
     def update_passwrod(self,*args,**kwargs):
+        '''
+        
+        :param args: 
+        :param kwargs: 
+        :return: 
+        '''
+
+    def update_dish(self,*args,**kwargs):
         '''
         
         :param args: 
